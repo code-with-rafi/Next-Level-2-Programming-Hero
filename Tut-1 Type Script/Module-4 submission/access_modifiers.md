@@ -1,22 +1,22 @@
 ## Access Modifiers (public, private, protected, and readonly) work in TypeScript OOP
 
-    Object Oriented Programming (OOP) is a programmin paradism that organizes code into objects that contain both data (attribute) and behaviour (methods). Key concepts of OOP are:
+Object Oriented Programming (OOP) is a programmin paradism that organizes code into objects that contain both data (attribute) and behaviour (methods). Key concepts of OOP are:
 
-    Class : A blue prints of creating an object
-    Object : An instance of class with specific data and behavior
-    Attributes : Variable that stores data of object
-    Methods : Is a function inside a class thar is defined the behaviour of an object
-    Encapsulation : Creates a restriction to access the object data
-    Inheritance : Creates a new class is called child from existing class is called parents
-    Polymorphism : Using same name of a method for diiferent class
+1. Class : A blue prints of creating an object
+2. Object : An instance of class with specific data and behavior
+3. Attributes : Variable that stores data of object
+4. Methods : Is a function inside a class thar is defined the behaviour of an object
+5. Encapsulation : Creates a restriction to access the object data
+6. Inheritance : Creates a new class is called child from existing class is called parents
+7. Polymorphism : Using same name of a method for diiferent class
 
 
-    For encapsulation, uses diiferent types of modifers like public, private, protected and readonly.
+For encapsulation, uses diiferent types of modifers like public, private, protected and readonly.
 
-        1. Public : When a variable is declared by public, the data of the vaiable can access from any objects. 
-        2. Private : When a vriable is declared as private, the data can't read or write.
-        3. Protected : When a variable is declared as protected, it controlls the visibility of properties and methhods.
-        4. Readonly : The data of a variable can access but can't modify the existing value.
+1. Public : When a variable is declared by public, the data of the vaiable can access from any objects. 
+2. Private : When a vriable is declared as private, the data can't read or write.
+3. Protected : When a variable is declared as protected, it controlls the visibility of properties and methhods.
+4. Readonly : The data of a variable can access but can't modify the existing value.
 
         For example:
             
@@ -71,4 +71,4 @@
         protected _baseSalary : number -> can visible by any object of the class Employee
         
 
-    In encapsulation, The modifires are protected data by restricting modification. As a result datas are saved from unusal activites. It restricts direct access to data.
+In encapsulation, The modifires are protected data by restricting modification. As a result datas are saved from unusal activites. It restricts direct access to data.
