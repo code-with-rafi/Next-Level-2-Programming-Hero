@@ -12,11 +12,12 @@
         problem-8 : Async and Await response
 ## Solutions:
 
-    ** [](./solutions.ts) -> contains the solution of eight typescript files
+1. [Solution](./solutions.ts) -> contains the solution of eight typescript files
 
 ## Blog Article:
 
 1. [TypeScript's Type Hierarchy](./typeScript_type_hierarchy.md)
 2. [Access Modifiers](./access_modifiers.md)
+
 
 
