@@ -1,0 +1,8 @@
+// import "./problem_1.js"
+// import "./problem_2.js"
+// import "./problem_3.js"
+// import "./problem_4.js"
+// import "./problem_5.js"
+// import "./problem_6.js"
+// import "./problem_7.js"
+import "./problem_8.js";
