@@ -1,4 +1,5 @@
 import { createServer, IncomingMessage, ServerResponse } from "http";
+import routeHandler from "./routes/route";
 
 const server = createServer((req:IncomingMessage,res:ServerResponse)=>{
     // console.log(req);
@@ -6,35 +7,7 @@ const server = createServer((req:IncomingMessage,res:ServerResponse)=>{
     // console.log("Response",res);
     // console.log(req.url);
     // console.log(req.method);
-    const url = req.url;
-    const method = req.method;
-    if(url === "/" && method === "GET"){
-        // console.log("This is route");
-        // res.writeHead(200,{"content-type":"text/plane"});
-        // res.end("this is root route");
-        res.writeHead(200,{
-            "content-type":"application/json"
-        });
-        res.end(JSON.stringify({
-            message : "this is route"
-        }));
-    }
-    else if(url?.startsWith("/products")){
-        res.writeHead(200,{
-            "content-type":"application/json"
-        });
-        res.end(JSON.stringify({
-            message : "this is producr"
-        }));
-    }
-    else{
-        res.writeHead(200,{
-            "content-type":"application/json"
-        });
-        res.end(JSON.stringify({
-            message : "Route not found"
-        }));
-    }
+    routeHandler(req,res);
 });
 
 server.listen(5000,()=>{
