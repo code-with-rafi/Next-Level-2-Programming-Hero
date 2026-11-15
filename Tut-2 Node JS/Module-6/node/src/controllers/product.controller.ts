@@ -39,11 +39,19 @@ const productController = async (req:IncomingMessage,res:ServerResponse)=>{
     else if(method === "GET" && id != null){
         const products = productService();
         const product = products.find((p:IProduct) => p.id === id);
+        if(!product){
+            res.writeHead(404,{
+                "content-type":"application/json"
+            });
+            res.end(JSON.stringify({
+                message : "Product not found !!!"
+            }));
+        }
         res.writeHead(200,{
                 "content-type":"application/json"
         });
         res.end(JSON.stringify({
-            message : "this is product",
+            message : "Products Retrieved Successfully!!!",
             data : product
         }));
     }
