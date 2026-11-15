@@ -5,6 +5,7 @@ import productController from "../controllers/product.controller";
 const routeHandler = (req:IncomingMessage,res:ServerResponse)=>{
     const url = req.url;
     const method = req.method;
+    
     if(url === "/" && method === "GET"){
         res.writeHead(200,{
             "content-type":"application/json"
