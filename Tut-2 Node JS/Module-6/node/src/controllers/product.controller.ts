@@ -3,19 +3,19 @@ import { productService } from "../service/product.service";
 
 
 const productController = (req:IncomingMessage,res:ServerResponse)=>{
-    const products = [
-        {
-            "id" : 1,
-            "name" : "Product-1",
-            "price" : 30
-        },
-        {
-            "id" : 2,
-            "name" : "Product-2",
-            "price" : 30
-        }
-    ]
-    productService();
+    // const products = [
+    //     {
+    //         "id" : 1,
+    //         "name" : "Product-1",
+    //         "price" : 30
+    //     },
+    //     {
+    //         "id" : 2,
+    //         "name" : "Product-2",
+    //         "price" : 30
+    //     }
+    // ]
+    const products = productService();
     res.writeHead(200,{
             "content-type":"application/json"
         });
