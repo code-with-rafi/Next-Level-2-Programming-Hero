@@ -1,5 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from "http";
 import routeHandler from "./routes/route";
+import config from "./config";
+
 
 const server = createServer((req:IncomingMessage,res:ServerResponse)=>{
     // console.log(req);
@@ -10,6 +12,6 @@ const server = createServer((req:IncomingMessage,res:ServerResponse)=>{
     routeHandler(req,res);
 });
 
-server.listen(5000,()=>{
+server.listen(config.port,()=>{
     console.log("Server is running !!!");
 })
