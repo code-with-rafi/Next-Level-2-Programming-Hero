@@ -1,6 +1,22 @@
 [
-  { "id": 1, "name": "Product-1", "price": 30 },
-  { "id": 2, "name": "Product-2", "price": 30 },
-  { "id": 1794764276108, "name": "Product-3", "price": 20 },
-  { "id": 1794764311967, "name": "Product-4", "price": 34 }
+    {
+        "id": 1,
+        "name": "Product-1",
+        "price": 30
+    },
+    {
+        "id": 2,
+        "name": "New Product-2",
+        "price": 37
+    },
+    {
+        "id": 1794764276108,
+        "name": "New Product-3 Updated",
+        "price": 23
+    },
+    {
+        "id": 1794764311967,
+        "name": "Product-4 Updated",
+        "price": 18
+    }
 ]
