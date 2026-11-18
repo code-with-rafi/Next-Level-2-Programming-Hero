@@ -64,7 +64,7 @@ app.post("/api/v1/users",async (req:Request,res:Response)=>{
         });
     } catch (error:any) {
         res.status(500).json({
-            status: true,
+            status: false,
             message: error?.message,
             error : error
         });
@@ -81,6 +81,12 @@ app.get("/api/v1/users", async (req:Request,res:Response)=>{
             SELECT * FROM users`,
         );
         // console.log(result);
+        if(result.rowCount === 0){
+            res.status(500).json({
+                status: false,
+                message: "User Not Found"
+            });
+        }
         res.status(200).json({
             status: true,
             message: "User Retrieved Successfully!!",
@@ -89,7 +95,7 @@ app.get("/api/v1/users", async (req:Request,res:Response)=>{
 
     } catch (error:any) {
         res.status(500).json({
-            status: true,
+            status: false,
             message: error?.message,
             error : error
         });
@@ -105,6 +111,12 @@ app.get("/api/v1/users/:id", async (req:Request,res:Response)=>{
             [id]
         );
         // console.log(result);
+        if(result.rowCount === 0){
+            res.status(500).json({
+                status: false,
+                message: "User Not Found"
+            });
+        }
         res.status(200).json({
             status: true,
             message: "User Retrieved Successfully!!",
@@ -113,7 +125,7 @@ app.get("/api/v1/users/:id", async (req:Request,res:Response)=>{
 
     } catch (error:any) {
         res.status(500).json({
-            status: true,
+            status: false,
             message: error?.message,
             error : error
         });
@@ -137,6 +149,12 @@ app.put("/api/v1/users/:id", async (req:Request,res:Response)=>{
             [name ?? null, password ?? null, age ?? null, is_Active ?? null, id]
         );
         // console.log(result);
+        if(result.rowCount === 0){
+            res.status(500).json({
+                status: false,
+                message: "User Not Found"
+            });
+        }
         res.status(200).json({
             status: true,
             message: "User Updated Successfully!!",
@@ -145,15 +163,42 @@ app.put("/api/v1/users/:id", async (req:Request,res:Response)=>{
         
     } catch (error:any) {
         res.status(500).json({
-            status: true,
+            status: false,
             message: error?.message,
             error : error
         });
     }
-
-
 })
 
+// delete user
+app.delete("/api/v1/users/:id", async (req:Request,res:Response)=>{
+    try {
+        const {id} = req.params;
+        const result = await pool.query(
+            `DELETE FROM users WHERE id = $1`,
+            [id]
+        );
+        // console.log(result);
+        if(result.rowCount === 0){
+            res.status(500).json({
+                status: false,
+                message: "User Not Found"
+            });
+        }
+        res.status(200).json({
+            status: true,
+            message: "User Deleted Successfully!!",
+            data: result.rows[0]
+        });
+        
+    } catch (error:any) {
+        res.status(500).json({
+            status: false,
+            message: error?.message,
+            error : error
+        });
+    }
+})
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
