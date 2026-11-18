@@ -1,5 +1,6 @@
 import express, { type Application, type Request, type Response } from "express"
 import {Pool} from "pg"
+import config from "./config";
 
 
 const app:Application = express()
@@ -11,7 +12,7 @@ app.use(express.text())
 app.use(express.urlencoded({extended:true}))
 
 const pool = new Pool({
-    connectionString : "postgresql://neondb_owner:npg_AwdglQpvY4X7@ep-morning-silence-b3k52enf-pooler.c-4.ap-southeast-1.aws.neon.tech/neondb?sslmode=falsee&channel_binding=require"
+    connectionString : config.connection_string
 });
 
 // console.log(pool);
@@ -200,6 +201,6 @@ app.delete("/api/v1/users/:id", async (req:Request,res:Response)=>{
     }
 })
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.listen(config.port, () => {
+    console.log(`Server running on port ${config.port}`);
 });
