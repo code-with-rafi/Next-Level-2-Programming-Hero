@@ -45,6 +45,7 @@ app.get("/",(req:Request,res:Response)=>{
     });
 });
 
+// create user
 app.post("/api/v1/users",async (req:Request,res:Response)=>{
     try {
            // console.log(req.body);
@@ -61,6 +62,55 @@ app.post("/api/v1/users",async (req:Request,res:Response)=>{
             message: "User Created",
             data: result.rows[0]
         });
+    } catch (error:any) {
+        res.status(500).json({
+            status: true,
+            message: error?.message,
+            error : error
+        });
+    }
+})
+
+
+// retrieve all user and single user
+app.get("/api/v1/users", async (req:Request,res:Response)=>{
+    try {
+        // const id = req.params.id;
+        const {id} = req.params;
+        const result = await pool.query(`
+            SELECT * FROM users`,
+        );
+        // console.log(result);
+        res.status(200).json({
+            status: true,
+            message: "User Retrieved Successfully!!",
+            data: result.rows
+        });
+
+    } catch (error:any) {
+        res.status(500).json({
+            status: true,
+            message: error?.message,
+            error : error
+        });
+    }
+})
+
+app.get("/api/v1/users/:id", async (req:Request,res:Response)=>{
+    try {
+        // const id = req.params.id;
+        const {id} = req.params;
+        const result = await pool.query(`
+            SELECT * FROM users WHERE id=$1`,
+            [id]
+        );
+        // console.log(result);
+        res.status(200).json({
+            status: true,
+            message: "User Retrieved Successfully!!",
+            data: result.rows[0]
+        });
+
     } catch (error:any) {
         res.status(500).json({
             status: true,
