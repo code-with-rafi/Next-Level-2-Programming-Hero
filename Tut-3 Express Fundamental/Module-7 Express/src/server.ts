@@ -11,18 +11,18 @@ app.use(express.text())
 app.use(express.urlencoded({extended:true}))
 
 const pool = new Pool({
-    connectionString : "postgresql://neondb_owner:npg_AwdglQpvY4X7@ep-morning-silence-b3k52enf-pooler.c-4.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+    connectionString : "postgresql://neondb_owner:npg_AwdglQpvY4X7@ep-morning-silence-b3k52enf-pooler.c-4.ap-southeast-1.aws.neon.tech/neondb?sslmode=falsee&channel_binding=require"
 });
 
 // console.log(pool);
 const initDB = async()=>{
     try {
         await pool.query(`
-            CREATE TABLE users(
+            CREATE TABLE IF NOT EXISTS users(
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(255),
-                email VARCHAR(255),
-                password VARCHAR(255),
+                email VARCHAR(255) UNIQUE NOT NULL,
+                password VARCHAR(255) NOT NULL,
                 age INT,
                 is_Active BOOLEAN,
                 create_at TIMESTAMP DEFAULT NOW(),
@@ -45,16 +45,29 @@ app.get("/",(req:Request,res:Response)=>{
     });
 });
 
-app.post("/",async (req:Request,res:Response)=>{
-    // console.log(req.body);
-    // const body = req.body;
-    const {name, age, password} = req.body
-    // console.log(password);
-    res.status(200).json({
-        status: true,
-        message: "This is a test api",
-        data: {name,age}
-    });
+app.post("/api/v1/users",async (req:Request,res:Response)=>{
+    try {
+           // console.log(req.body);
+        // const body = req.body;
+        const {name, email, password, age} = req.body;
+        const result = await pool.query(`
+                INSERT INTO users (name, email, password, age)
+                VALUES ($1, $2, $3, $4) RETURNING *`,
+                [name, email, password, age]
+            );
+        // console.log(result);
+        res.status(200).json({
+            status: true,
+            message: "User Created",
+            data: result.rows[0]
+        });
+    } catch (error:any) {
+        res.status(500).json({
+            status: true,
+            message: error?.message,
+            error : error
+        });
+    }
 })
 
 app.listen(port, () => {
