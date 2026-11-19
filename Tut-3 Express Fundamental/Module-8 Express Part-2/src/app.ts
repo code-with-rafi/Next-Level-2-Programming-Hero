@@ -1,5 +1,6 @@
 import express, { type Application, type Request, type Response } from "express"
 import { pool } from "./db";
+import { userRoute } from "./user/user.route";
 
 
 
@@ -22,30 +23,7 @@ app.get("/",(req:Request,res:Response)=>{
 });
 
 // create user
-app.post("/api/v1/users",async (req:Request,res:Response)=>{
-    try {
-           // console.log(req.body);
-        // const body = req.body;
-        const {name, email, password, age} = req.body;
-        const result = await pool.query(`
-                INSERT INTO users (name, email, password, age)
-                VALUES ($1, $2, $3, $4) RETURNING *`,
-                [name, email, password, age]
-            );
-        // console.log(result);
-        res.status(200).json({
-            status: true,
-            message: "User Created",
-            data: result.rows[0]
-        });
-    } catch (error:any) {
-        res.status(500).json({
-            status: false,
-            message: error?.message,
-            error : error
-        });
-    }
-})
+app.use("/api/v1/users",userRoute)
 
 
 // retrieve all user and single user
