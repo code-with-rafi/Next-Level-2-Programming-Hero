@@ -1,6 +1,7 @@
 import express, { type Application, type Request, type Response } from "express"
 import { pool } from "./db";
 import { userRoute } from "./user/user.route";
+import { profileRoute } from "./profile/profile.route";
 
 
 
@@ -23,7 +24,8 @@ app.get("/",(req:Request,res:Response)=>{
 });
 
 
-app.use("/api/v1/users",userRoute)
+app.use("/api/v1/users",userRoute);
+app.use("/api/v1/profiles",profileRoute);
 
 
 
