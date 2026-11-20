@@ -34,6 +34,7 @@ const loginUserIntoDb = async(payload:IUser)=>{
         "aderwi9932tjkb",
         {expiresIn : "1d"}
     );
+    delete user.rows[0].password;
     return {accessToken, user:user.rows[0]}
 
 
