@@ -1,8 +1,9 @@
 import bcrypt from "bcryptjs";
 import { pool } from "../db";
 import jwt from "jsonwebtoken"
+import type { IUser } from "../user/user.interface";
 
-const loginUserIntoDb = async(payload:any)=>{
+const loginUserIntoDb = async(payload:IUser)=>{
     // check if the user is exists
     // check the password is correct
     // check user status
