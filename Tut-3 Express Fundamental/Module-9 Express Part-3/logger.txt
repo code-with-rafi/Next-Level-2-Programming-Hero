@@ -4,3 +4,63 @@
  Method : GET | Url : /.well-known/appspecific/com.chrome.devtools.json | Time : 1795500162901
 
  Method : GET | Url : / | Time : 1795500180444
+
+ Method : POST | Url : / | Time : 1795500817938
+
+ Method : GET | Url : /api/v1/users | Time : 1795500841801
+
+ Method : GET | Url : /api/v1/users | Time : 1795500905341
+
+ Method : GET | Url : /api/v1/users | Time : 1795500929245
+
+ Method : GET | Url : /api/v1/users | Time : 1795500945218
+
+ Method : GET | Url : /user/profiles | Time : 1795501224732
+
+ Method : GET | Url : /api/v1/profiles | Time : 1795501269417
+
+ Method : GET | Url : /api/v1/users | Time : 1795501305756
+
+ Method : GET | Url : /.well-known/appspecific/com.chrome.devtools.json | Time : 1795501306319
+
+ Method : GET | Url : /api/v1/profiles | Time : 1795501312805
+
+ Method : GET | Url : /api/v1/profiles | Time : 1795501440564
+
+ Method : GET | Url : /api/v1/user | Time : 1795501445780
+
+ Method : GET | Url : /api/v1/users | Time : 1795501455682
+
+ Method : GET | Url : /.well-known/appspecific/com.chrome.devtools.json | Time : 1795501456206
+
+ Method : GET | Url : /api/v1/users | Time : 1795501646224
+
+ Method : GET | Url : /.well-known/appspecific/com.chrome.devtools.json | Time : 1795501646840
+
+ Method : GET | Url : /api/v1/users | Time : 1795501673002
+
+ Method : GET | Url : /.well-known/appspecific/com.chrome.devtools.json | Time : 1795501673234
+
+ Method : GET | Url : /api/v1/users | Time : 1795501706654
+
+ Method : POST | Url : /api/v1/auth/login | Time : 1795501785066
+
+ Method : GET | Url : /api/v1/users | Time : 1795501825091
+
+ Method : GET | Url : /api/v1/users | Time : 1795501863191
+
+ Method : GET | Url : /api/v1/users | Time : 1795501901022
+
+ Method : GET | Url : /api/v1/users | Time : 1795502108702
+
+ Method : GET | Url : /api/v1/users | Time : 1795502117656
+
+ Method : GET | Url : /api/v1/users | Time : 1795502133598
+
+ Method : GET | Url : /api/v1/users | Time : 1795502160932
+
+ Method : GET | Url : /api/v1/users | Time : 1795502401561
+
+ Method : GET | Url : /api/v1/users | Time : 1795502462514
+
+ Method : GET | Url : /api/v1/users | Time : 1795502470118
