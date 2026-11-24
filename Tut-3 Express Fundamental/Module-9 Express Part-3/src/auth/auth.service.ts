@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { pool } from "../db";
 import jwt from "jsonwebtoken"
 import type { IUser } from "../user/user.interface";
+import config from "../config";
 
 const loginUserIntoDb = async(payload:IUser)=>{
     // check if the user is exists
@@ -31,7 +32,7 @@ const loginUserIntoDb = async(payload:IUser)=>{
     }
     const accessToken = jwt.sign(
         jwtPayload, 
-        "aderwi9932tjkb",
+        config.jwt_secret,
         {expiresIn : "1d"}
     );
     delete user.rows[0].password;
