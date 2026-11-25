@@ -14,13 +14,31 @@ const loginUser = async(req:Request, res:Response)=>{
             domain : "localhost",
             // maxAge :
         });
-        return res.status(200).json({
+        res.status(200).json({
             status: true,
             message: "User Logged In Successfully",
             data: result
         });
     } catch (error:any) {
-        return res.status(500).json({
+        res.status(500).json({
+            status: false,
+            message: error?.message,
+            error : error
+        });    
+    }
+}
+
+const generateToken = async(req:Request, res:Response)=>{
+    try {
+        console.log(req.cookies.refreshToken);
+        const result = await authService.generateAccessToken(req.cookies.refreshToken);
+        res.status(200).json({
+            status: true,
+            message: "Access Token Generated Successfully",
+            data: result
+        });
+    } catch (error:any) {
+        res.status(500).json({
             status: false,
             message: error?.message,
             error : error
@@ -29,5 +47,6 @@ const loginUser = async(req:Request, res:Response)=>{
 }
 
 export const authController = {
-    loginUser
+    loginUser,
+    generateToken
 }

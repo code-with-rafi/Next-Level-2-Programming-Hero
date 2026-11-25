@@ -8,6 +8,7 @@ import { logger } from "./middleware/logger";
 import globalErrorHandler from "./middleware/globalErrorHandler";
 import cors from "cors"
 import config from "./config";
+import cookieParser from "cookie-parser"
 
 
 const app:Application = express()
@@ -17,11 +18,13 @@ const corsOptions = {
     optionSuccessStatus : 200
 }
 app.use(cors(corsOptions))
-
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.text())
 app.use(express.urlencoded({extended:true}))
 app.use(logger)
+
+
 
 app.get("/",(req:Request,res:Response)=>{
     // res.send("hello world");
